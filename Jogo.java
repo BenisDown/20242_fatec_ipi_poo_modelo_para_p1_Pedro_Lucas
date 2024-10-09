@@ -10,17 +10,20 @@ public class Jogo {
             switch(acaoDoCacador){
                 case 1:
                     cacador.cacar();
+                    cacador.morrer();
                     break;
                 case 2:
                     cacador.comer();
+                    cacador.morrer();
                     break;
                 case 3:
                     cacador.dormir();
+                    cacador.morrer();
                     break;
             }
             System.out.println(cacador);
             System.out.println("=====================================");
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         }
     }
 }

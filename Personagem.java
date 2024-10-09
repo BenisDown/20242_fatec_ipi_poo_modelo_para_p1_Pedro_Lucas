@@ -3,6 +3,7 @@ public class Personagem{
   private int energia;
   private int fome;
   private int sono;
+  boolean morrer;
 
   Personagem(){
     System.out.println("Construindo novo personagem");
@@ -57,11 +58,20 @@ public class Personagem{
     }
   }
 
+  void morrer(){
+    if (energia <= 0) {
+      System.out.println("O personagem morreu");
+      System.exit(0);
+    }
+  }
   public String toString(){
+    if (nome == null) {
+      throw new NullPointerException("nome == null");
+    }
     //nome: e:5, f:4, s:8
     return String.format(
       "%s: e:%d, f:%d, s:%d",
       nome, energia, fome, sono
-    );  
+    );
   }
 }
