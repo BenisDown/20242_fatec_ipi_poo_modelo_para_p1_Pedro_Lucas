@@ -3,13 +3,15 @@ public class Personagem{
   private int energia;
   private int fome;
   private int sono;
-  boolean morrer;
+  private boolean morto;
+
 
   Personagem(){
     System.out.println("Construindo novo personagem");
     energia = 10;
     fome = 0;
     sono = 0;
+    boolean morto = false;
   }
 
 
@@ -18,6 +20,7 @@ public class Personagem{
     this.energia = energia < 0 || energia > 10 ? 10 : energia;
     this.fome = fome >= 0 && fome <= 10 ? fome : 0;
     this.sono = sono >= 0 && sono <= 10 ? sono : 0;
+    boolean morto = false;
   }
 
   void cacar(){
@@ -58,13 +61,18 @@ public class Personagem{
     }
   }
 
-  void morrer(){
+  boolean morrer() {
     if (energia <= 0) {
-      System.out.println("O personagem morreu");
-      System.exit(0);
+      System.out.println(nome + " Ficou sem energia");
+      System.out.println("Game Over para o jogador: " + nome);
+      morto = true;
+      return true;
     }
+    return morto;
   }
-  public String toString(){
+  public boolean isMorto() {
+    return morto;
+  }  public String toString(){
     if (nome == null) {
       throw new NullPointerException("nome == null");
     }
