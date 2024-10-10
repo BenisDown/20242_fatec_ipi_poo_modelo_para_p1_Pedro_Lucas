@@ -26,32 +26,18 @@ public class Jogo {
                     break;
             }
 
-            var acaoDoPreguicoso = gerador.nextInt(3) + 1;
-            int[] weights = {1, 3, 6};
-            Random random = new Random();
-            int totalWeight = 0;
-            for (int weight : weights) {
-                totalWeight += weight;
-            }
-            int randomIndex = random.nextInt(totalWeight);
-            int currentWeight = 0;
-            for (int i = 0; i < weights.length; i++) {
-                currentWeight += weights[i];
-                if (randomIndex < currentWeight) {
-                    acaoDoPreguicoso = i + 1;
-                    break;
-                }
-            }
+            var acaoDoPreguicoso = gerador.nextInt(10) + 1;
+            
             switch(acaoDoPreguicoso){
                 case 1:
                     preguicoso.cacar();
                     preguicoso.morrer();
                     break;
-                case 2:
+                case 2, 3, 4:
                     preguicoso.comer();
                     preguicoso.morrer();
                     break;
-                case 3:
+                case 5, 6, 7, 8, 9:
                     preguicoso.dormir();
                     preguicoso.morrer();
                     break;
@@ -63,7 +49,7 @@ public class Jogo {
             if(preguicoso.isMorto() || cacador.isMorto()){
                 break;
             }
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         }
     }
 }
